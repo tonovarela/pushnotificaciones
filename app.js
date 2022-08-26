@@ -5,11 +5,9 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-
 app.use(cors());
 app.use(bodyParser.json());
-
-
+app.use(express.static(__dirname + '/public'))
 const vapidKeys = {
     publicKey: "BJRRivUnhAT_O7IUClWKroyJkD-dsTb-gFsd2EcoJWNn8cG7K0gxe8gjzBj4acLweaovvTm1C82HTACzJbXY5pM",
     privateKey: "EpH96kz83og6WlHg9EbSMD6r1f_VTTYNxWdxdoSE0lc"
@@ -68,11 +66,9 @@ const sendPush = (req, res) => {
     });
     handlerResponse(res, 'Se envio la notificacion' , 200)
 }
-
 app.route('/save').post(savePush);
 app.route('/send').post(sendPush);
 
-
-const httpServer = app.listen(9000, () => {
+const httpServer = app.listen(8083, () => {
     console.log("HTTP Server running at http://localhost:" + httpServer.address().port);
 });
