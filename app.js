@@ -67,7 +67,6 @@ const sendPush = (req, res) => {
         })
     });
     handlerResponse(res, 'Se envio la notificacion' , 200)
-
 }
 
 app.route('/save').post(savePush);
